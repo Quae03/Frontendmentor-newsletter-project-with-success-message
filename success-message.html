@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Newsletter sign-up form with success message</title>
+
+  <style>
+    body {  
+      background-color: #101030bb;
+      color: rgb(50, 50, 75);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+    }
+
+    .content { 
+      border-radius: 30px;
+      box-shadow: 0 0 80px #00000080;
+      display: flex;
+      justify-content: center;
+      background-color: white;
+      margin: 100px auto;
+      /* min-width: ???; */
+      max-width: 35%;
+    }
+
+    section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: 40px 60px 48px 60px;
+    }
+
+    .img {
+      background: url(assets/images/icon-success.svg) no-repeat;
+      background-size: 85px;
+      height: 100px;
+    }
+
+    h1 { 
+      font-size: 60px;
+      margin: 0;
+      padding: 0;
+    }
+
+    button {
+      background-image: linear-gradient(to right, rgb(180, 60, 110), rgb(205, 105, 45));
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0px 10px 20px #00000050;
+      color: white;
+      font-size: 14px;
+      font-weight: bold;
+      margin-top: 20px;
+      padding: 20px 16px;
+      width: 100%;
+    }
+
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+  <div class="content">
+
+    <section>
+
+      <!-- Success message start -->
+      
+      <div class="img"></div>
+
+      <h1>Thanks for subscribing!</h1>
+      
+      <p>A confirmation email has been sent to <strong>theorg@loremcompany.com</strong>. 
+      Please open it and click the button inside to confirm your subscription.</p>
+      
+      <a class="button" href="./" type="submit"><button>Dismiss message</button></a>
+      
+      </section>
+
+  </div>
+
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Quaelan Sayers</a>.
+  </div>
+
+</body>
+</html>
