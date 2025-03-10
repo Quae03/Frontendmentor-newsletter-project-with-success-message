@@ -15,7 +15,6 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
     }
-
     .content { 
       border-radius: 30px;
       box-shadow: 0 0 80px #00000080;
@@ -23,42 +22,41 @@
       justify-content: center;
       background-color: white;
       margin: 100px auto;
-      /* min-width: ???; */
       max-width: 35%;
     }
-
     section {
       display: flex;
       flex-direction: column;
       justify-content: center;
       margin: 40px 60px 48px 60px;
     }
-
     .img {
       background: url(assets/images/icon-success.svg) no-repeat;
       background-size: 85px;
       height: 100px;
     }
-
     h1 { 
       font-size: 60px;
       margin: 0;
       padding: 0;
     }
-
-    button {
-      background-image: linear-gradient(to right, rgb(180, 60, 110), rgb(205, 105, 45));
+    .button {
+      background-color: black;
+      display: block;
       border: none;
       border-radius: 8px;
-      box-shadow: 0px 10px 20px #00000050;
       color: white;
       font-size: 14px;
       font-weight: bold;
       margin-top: 20px;
       padding: 20px 16px;
-      width: 100%;
+      text-align: center;
     }
-
+    .button:hover, .button:active {
+      background-image: linear-gradient(to right, rgb(180, 60, 110), rgb(205, 105, 45));
+      box-shadow: 0px 10px 20px #00000050;
+      cursor: pointer;
+    }
     .attribution { font-size: 11px; text-align: center; }
     .attribution a { color: hsl(228, 45%, 44%); }
   </style>
@@ -74,10 +72,10 @@
 
       <h1>Thanks for subscribing!</h1>
       
-      <p>A confirmation email has been sent to <strong>theorg@loremcompany.com</strong>. 
+      <p>A confirmation email has been sent to <span id="user-email"></span>. 
       Please open it and click the button inside to confirm your subscription.</p>
       
-      <a class="button" href="./" type="submit"><button>Dismiss message</button></a>
+      <a class="button" onclick="dismiss()" type="submit">Dismiss message</a>
       
       </section>
 
@@ -89,4 +87,20 @@
   </div>
 
 </body>
+<script>
+
+  window.onload = function() {
+    let email = sessionStorage.getItem('userEmail');
+  
+  if(email) {
+    document.getElementById("user-email").innerHTML = `<strong>${email}</strong>`;
+  } else {
+    document.getElementById("user-email").textContent = "No email found"
+  }
+  };
+
+  function dismiss() {
+    window.location.href = 'index.html';
+  };
+</script>
 </html>

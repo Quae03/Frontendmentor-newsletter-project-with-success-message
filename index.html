@@ -16,7 +16,6 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
     }
-
     .content { 
       border-radius: 30px;
       box-shadow: 0 0 80px #00000080;
@@ -25,15 +24,11 @@
       background-color: white;
       margin: 100px auto;
       padding: 20px 20px 20px 10px;
-      /* min-width: ???; */
       max-width: 60%;
     }
-
     .section-one {
       margin: auto 60px auto 60px;
-      width: 50%;
     }
-
     .img-section {
       background: url(assets/images/illustration-sign-up-desktop.svg) no-repeat;
       background-size: cover;
@@ -42,49 +37,64 @@
       height: 500px;
       width: 50%;
     }
-
     h1 { 
       font-size: 48px;
       margin: 0;
       padding: 0;
     }
-
     ul {
       display: flex;
       flex-direction: column;
-      padding-left: 30px;
+      padding: 0;
     }
-
     li {
-      border: 2x solid red;
-      list-style-type: circle;
-      list-style-image: url(assets/images/icon-list.svg);
-      padding: 5px;
+      /* display: inline-flex; */
+      list-style-type: none;
+      background-image: url(assets/images/icon-list.svg);
+      background-position: left center;
+      background-repeat: no-repeat;
+      padding-left: 30px;
+      margin-top: 10px;
     }
-
-    .email-div {
+    .labelDiv {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 40px;
+    }
+    .email-error {
+      color: red;
+      display: none;
+    }
+    .email {
       display: block;
-      margin-top: 15px;
+      margin-top: 10px;
       padding: 1em;
       font-size: 16px;
       border: 1px solid gray;
+      box-sizing: border-box;
       border-radius: 10px;
-      width: 92%;
+      width: 100%;
     }
-
-    button {
-      background-image: linear-gradient(to right, rgb(180, 60, 110), rgb(205, 105, 45));
+    a:hover {
+      cursor: pointer;
+    }
+    .button {
+      background-color: black;
+      display: block;
       border: none;
       border-radius: 8px;
-      box-shadow: 0px 10px 20px #00000050;
       color: white;
       font-size: 14px;
       font-weight: bold;
       margin-top: 20px;
       padding: 20px 16px;
-      width: 100%;
+      text-align: center;
     }
-
+    .button:hover, .button:active {
+      background-image: linear-gradient(to right, rgb(180, 60, 110), rgb(205, 105, 45));
+      box-shadow: 0px 10px 20px #00000050;
+      cursor: pointer;
+    }
     .attribution { font-size: 11px; text-align: center; }
     .attribution a { color: hsl(230, 3%, 46%); }
   </style>
@@ -105,10 +115,15 @@
         <li>And much more!</li>
       </ul>
 
-      <label id="email-text"><strong>Email address:</strong></label>
+      <div class="labelDiv">
+        <label for="email" id="email-text"><strong>Email address</strong></label>
+        <label for="email" id="email-error" class="email-error">Valid email required</label>
+      </div>
 
-      <div class="email-div">theorg@loremcompany.com</div>
-      <a class="button" href="success-message" type="submit"><button>Subscribe to monthly newsletter</button></a>
+      <div>
+        <input class="email" type="email" name="email" id="email" placeholder="theorg@loremcompany.com">
+        <a class="button" onclick="redirect()">Subscribe to monthly newsletter</a>
+      </div>
 
   </section>
   <section class="img-section"></section>
@@ -120,4 +135,23 @@
   </div>
 
 </body>
+<script>
+const emailValidation = /^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/;
+let emailErrorMessage = document.getElementById('email-error');
+
+function redirect() {
+
+  let emailInput = document.getElementById('email').value.trim();
+
+  if (!emailValidation.test(emailInput)) {
+    emailErrorMessage.style.display = 'block';
+    email.style.color = 'red';
+    email.style.border = '1px solid red';
+    email.style.backgroundColor = 'rgb(230, 168, 168)';
+  } else {
+    sessionStorage.setItem('userEmail', emailInput);
+    window.location.href = 'success-message.html';
+  }
+};
+</script>
 </html>
